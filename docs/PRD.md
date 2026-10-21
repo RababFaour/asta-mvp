@@ -1,38 +1,63 @@
-# PRD: Asta's Training Tracker
+# PRD: Asta's Preparation Dashbaord
 
-## Problem
-Asta needs a way to see his training tasks and track completion
-before his fight against Lucifero.
+## Summary 
+Asta is a fictional fighter whose training notes are scattered.
+He needs a clear view of his task and progress. 
 
 ## User
 Asta, a mage-knight from the Black Bull squad who trains every day
 and has limited time before the battle.
 
-## Goal
+## Problem
+Asta needs a way to see his training tasks and track completion
+before his fight against Lucifero.
+
+## Goal of the first version
 A simple dashboard where Asta can see his tasks, tick them off,
 and know how ready he is.
 
 ## Must-have features
-1. See a list of training tasks (e.g. "Swing the sword 1000 times",
-   "Mana control drills", "Anti-magic sword practice")
-2. Mark a task as done or not done
-3. See overall progress (e.g. "3 of 8 done" with a progress bar)
-4. Add a new task
-5. Filter tasks: All / Done / Not done
+1.View training tasks.
+2.Toggle completion(complete and undo) for each task.
+3.See calculated progress(completed / total and a percentage).
 
-## Out of scope
-- Login or accounts
-- Database or saving to a server
-- Multiple users
-- Combat or game mechanics
+## User stories
+-Asta:I want to see my training tasks so i know what to do.
+-Asta:I want to mark a task complete, and undo it if i was wrong.
+-Asta:Iwant to see my progress, so I know how prepared I am.
+
+## Sample data and expected behavior
+| Task | Description | Priority |
+| --- | --- | --- |
+| Sword control | Practise precise anti-magic sword movements. | High |
+| Physical endurance | Complete a focused strength and stamina session. | Medium |
+| Team coordination | Review a preparation plan with the Black Bulls. | High |
 
 ## Acceptance criteria
-- [ ] The task list shows on the first screen with no setup
-- [ ] Ticking a task updates the progress count immediately
-- [ ] Adding a task shows it in the list right away
-- [ ] Each filter shows only the correct tasks
-- [ ] Works on a phone-size screen and a laptop screen
+- On load, the dashboard shows 3 tasks, 0 / 3 and 0%.
+- With one of three tasks complete, it shows 1 / 3 and 33%.
+- With two complete, it shows 2 / 3 and 67%.
+- With all three complete, it shows 3 / 3 and 100%.
+- Undoing a completion returns the count and percentage correctly
+  (e.g. 1 / 3 back to 0 / 3 and 0%).
+- Clicking a task's button repeatedly never counts it twice.
 
-## Open questions
-- Should progress reset every day?
-- Should tasks have a difficulty or priority?
+
+## Design and accessibility requirements
+- One dashboard screen, readable on mobile.
+- Clear status text per task (e.g. "Complete" / "Not complete"),
+  not color alone.
+- All controls usable with the keyboard, with visible focus.
+- Sufficient text contrast.
+
+## Stack
+Next.js, TypeScript, Tailwind CSS.
+
+## Assumptions and limitations
+- Progress is session-only and resets after refresh.
+- Percentage is completed / total, rounded to a whole number.
+
+## Out of scope
+Login, accounts, database, payments, chatbots, combat simulation,
+multiplayer, live anime data, adding/editing/deleting tasks,
+saving after refresh, extra routes.
