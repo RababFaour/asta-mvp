@@ -1,69 +1,157 @@
-import Image from "next/image";
+"use client";
+
+import { useMemo, useState } from "react";
+
+type Task = {
+  id: string;
+  title: string;
+  description: string;
+  priority: "High" | "Medium";
+  completed: boolean;
+};
+
+const initialTasks: Task[] = [
+  {
+    id: "sword-control",
+    title: "Sword control",
+    description: "Practise precise anti-magic sword movements.",
+    priority: "High",
+    completed: false,
+  },
+  {
+    id: "physical-endurance",
+    title: "Physical endurance",
+    description: "Complete a focused strength and stamina session.",
+    priority: "Medium",
+    completed: false,
+  },
+  {
+    id: "team-coordination",
+    title: "Team coordination",
+    description: "Review a preparation plan with the Black Bulls.",
+    priority: "High",
+    completed: false,
+  },
+];
 
 export default function Home() {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+
+  const completedCount = useMemo(
+    () => tasks.filter((task) => task.completed).length,
+    [tasks],
+  );
+  const totalTasks = tasks.length;
+  const progressPercent = Math.round((completedCount / totalTasks) * 100);
+
+  const toggleTask = (taskId: string) => {
+    setTasks((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task,
+      ),
+    );
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="min-h-screen bg-[#0B1020] px-4 py-8 text-slate-50 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#00ff87]">
+              Training Plan Active
+            </p>
+            <h1 className="text-3xl font-bold tracking-tight text-[#F8FAFC] sm:text-4xl">
+              Asta&apos;s Preparation Dashboard
+            </h1>
+          </div>
+        </header>
+
+        <main className="space-y-8">
+          <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <article className="rounded-2xl border border-slate-700 bg-[#1A2236] p-6 shadow-lg shadow-slate-950/20">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#f43f5e]">
+                Threat brief
+              </p>
+              <h2 className="mb-3 text-2xl font-semibold text-[#F8FAFC]">
+                Lucifero looms, but Asta is ready to train.
+              </h2>
+              <p className="text-base leading-7 text-[#CBD5E1]">
+                The goal is clarity, not certainty. This preparation tracker keeps the
+                plan focused on what can be controlled today: drills, endurance, and
+                team coordination.
+              </p>
+            </article>
+
+            <aside className="rounded-2xl border border-slate-700 bg-[#1A2236] p-6 shadow-lg shadow-slate-950/20">
+              <p className="mb-2 text-sm font-medium text-[#CBD5E1]">Preparation status</p>
+              <div className="mb-4 flex items-end gap-3">
+                <span className="text-5xl font-black leading-none text-[#F8FAFC] sm:text-6xl">
+                  {progressPercent}%
+                </span>
+              </div>
+              <p className="mb-4 text-xl font-medium text-[#00ff87]">
+                {completedCount}/{totalTasks} tasks completed
+              </p>
+              <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                <div
+                  className="h-full rounded-full bg-[#00ff87] transition-all duration-200"
+                  style={{ width: `${progressPercent}%` }}
+                  aria-label={`Progress: ${progressPercent}%`}
+                />
+              </div>
+            </aside>
+          </section>
+
+          <section className="grid gap-5 md:grid-cols-3">
+            {tasks.map((task) => {
+              const isComplete = task.completed;
+
+              return (
+                <article
+                  key={task.id}
+                  className="flex min-h-65 flex-col rounded-2xl border border-slate-700 bg-[#1A2236] p-5 shadow-lg shadow-slate-950/20"
+                >
+                  <div className="mb-4 flex items-start justify-between gap-3">
+                    <div>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#CBD5E1]">
+                        {task.priority} priority
+                      </p>
+                      <h3 className="text-2xl font-semibold text-[#F8FAFC]">
+                        {task.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <p className="mb-6 text-base leading-7 text-[#CBD5E1]">
+                    {task.description}
+                  </p>
+
+                  <div className="mt-auto space-y-4">
+                    <p className="text-base font-medium text-[#F8FAFC]">
+                      Status: <span className={isComplete ? "text-[#00ff87]" : "text-[#CBD5E1]"}>
+                        {isComplete ? "Complete" : "Not complete"}
+                      </span>
+                    </p>
+
+                    <button
+                      type="button"
+                      aria-pressed={isComplete}
+                      onClick={() => toggleTask(task.id)}
+                      className={`flex h-12 w-full items-center justify-center rounded-xl border px-4 text-base font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00ff87] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1020] ${
+                        isComplete
+                          ? "border-[#00ff87] bg-[#00ff87] text-[#0B1020] hover:bg-[#26ff9f]"
+                          : "border-slate-600 bg-[#0B1020] text-[#F8FAFC] hover:bg-slate-800"
+                      }`}
+                    >
+                      {isComplete ? "Undo complete" : "Mark complete"}
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
