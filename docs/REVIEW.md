@@ -36,7 +36,7 @@ The POC tested that complete and undo work and that the count and percentage cha
 It does one clear thing. It shows Asta's three training tasks and how much of the plan is done. Because it is small, I could test it with a real person quickly and get two ideas to improve it.
 
 ### What did MCP allow your agent to do, or how did your fallback work?
-- The Stitch MCP let the agent read my selected design directly, so it could copy the layout and colours.
+-  I made the dashboard design in Stitch. The Stitch MCP server was only used to run list_projects, which listed my projects, including Asta's Preparation Dashboard. It did not return the screens or design files. To give the agent the design, I sent my Stitch design to Copilot myself, and Copilot built the layout and style from that. So MCP confirmed the connection, and the design reached the agent through my manual handoff.
 
 ### Which AI-generated decision did you correct?
 Copilot added image slots to the task cards, but the image files were empty, so no pictures showed and the terminal gave 404 errors. Copilot also told me it could not verify the images. I did not accept that as finished. I saved real images in public/images/ with the exact file names, reloaded the page, and checked that all three cards show their image and the text is still readable.
