@@ -1,24 +1,29 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Asta's Preparation Dashboard
 
-First, run the development server:
+**Author:** [Rabab Ali Faour]
 
+## Summary
+A small MVP dashboard that tracks Asta's training plan before the Lucifero encounter. It has a threat brief, three task cards (Sword control, Physical endurance, Team coordination) and a progress summary. Progress means task completion, not a prediction that Asta will win. Tasks can be completed and undone, and the count and percentage come from one state source.
+
+## Install and run
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # open http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Documents
+- [PRD](docs/PRD.md)
+- [DESIGN](docs/DESIGN.md)
+- [MCP](docs/MCP.md)
+- [POC](docs/POC.md)
+- [REVIEW](docs/REVIEW.md)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Known issue
+On Windows, `npm run build` shows a warning that `@next/swc-win32-x64-msvc` is "not a valid Win32 application". The build still completes. The scripts use `--webpack` because the Turbopack native bindings did not load in my environment.
 
 ## Learn More
 
