@@ -84,7 +84,7 @@ export default function TaskProgress({ tasks }: TaskProgressProps) {
           className="mt-2 flex justify-between text-[10px] font-semibold uppercase tracking-wider text-slate-500"
         >
           <span>0% start</span>
-          <span>100% fully prepared</span>
+          <span>100% of tasks completed</span>
         </div>
       </aside>
 

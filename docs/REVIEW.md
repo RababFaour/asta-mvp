@@ -57,6 +57,14 @@ I decided the scope and wrote the PRD, and I chose the design. I had to check th
 
 ![Mobile dashboard](screenshots/mobile-360.png)
 
+### Mobile task cards and completion controls (all tasks incomplete)
+
+![Mobile task cards incomplete](screenshots/mobile-tasks-incomplete.png)
+
+### Mobile task cards after completing two tasks
+
+![Mobile task cards complete](screenshots/mobile-tasks-complete.png)
+
 ### Lint and build results:
 
 ![Lint and build](screenshots/lint-build.png)

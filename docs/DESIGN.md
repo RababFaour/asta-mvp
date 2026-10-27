@@ -20,7 +20,7 @@ On desktop the brief and the progress are side by side, and the three task cards
 - **Secondary text:** light gray (#CBD5E1) for descriptions.
 
 ## Typography
-- **Font:** Inter, because it is clean and easy to read on small screens.
+- **Font:** Geist, because it is clean and easy to read on small screens.
 - **Page title:** bold, about 28-32px, in normal title case.
 - **Progress percentage:** extra bold, about 48-64px. It is the biggest thing on the page because it is the most important.
 - **Card titles:** semibold, about 18-20px.
