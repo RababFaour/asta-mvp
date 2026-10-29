@@ -24,8 +24,8 @@ On desktop the brief and the progress are side by side, and the three task cards
 - **Page title:** bold, about 28-32px, in normal title case.
 - **Progress percentage:** extra bold, about 48-64px. It is the biggest thing on the page because it is the most important.
 - **Card titles:** semibold, about 18-20px.
-- **Body text:** Inter, about 14-16px.
-- **Headings and labels:** Anti-Magic Determination.
+- **Body text:** Geist, about 14-16px.
+- **Headings and labels:** Geist , using bold weights for visiual hierarchy.
 
 ## Spacing
 - I used an 8px base unit, so all gaps and padding are multiples of 8.
