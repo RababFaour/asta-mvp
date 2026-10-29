@@ -25,6 +25,9 @@ npm run build    # production build
 ## Known issue
 On Windows, `npm run build` shows a warning that `@next/swc-win32-x64-msvc` is "not a valid Win32 application". The build still completes. The scripts use `--webpack` because the Turbopack native bindings did not load in my environment.
 
+## Known Limitations
+Task completion progress is stored in React state and is not persisted. Refreshing the page resets the completed tasks, so progress returns to its initial state. The application does not currently save task progress to local storage or a backend database.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
